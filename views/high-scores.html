@@ -1,0 +1,38 @@
+<div class="container" ng-controller="HighScoresController">
+    <div class="row text-center">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <h3 class="panel-title">High scores table</h3>
+            </div>
+            <div class="panel-heading">
+                <div class="row">
+                    <div class="col-lg-3">
+                        <h3 class="panel-title">Username</h3>
+                    </div>
+                    <div class="col-lg-2">
+                        <h3 class="panel-title">Wins</h3>
+                    </div>
+                    <div class="col-lg-2">
+                        <h3 class="panel-title">Draws</h3>
+                    </div>
+                    <div class="col-lg-2">
+                        <h3 class="panel-title">Losses</h3>
+                    </div>
+                    <div class="col-lg-3">
+                        <h3 class="panel-title">Score</h3>
+                    </div>
+                </div>
+                <h3 class="panel-title">Panel primary</h3>
+            </div>
+            <div class="panel-body" ng-class-odd="'odd-high-score'" ng-repeat="score in scores">
+                <div class="row">
+                    <div class="col-lg-3">{{score.Username}}</div>
+                    <div class="col-lg-2">{{score.GamesWon}}</div>
+                    <div class="col-lg-2">{{score.DrawGames}}</div>
+                    <div class="col-lg-2">{{score.GamesLost}}</div>
+                    <div class="col-lg-3">{{score.Score}}</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

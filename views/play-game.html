@@ -1,0 +1,36 @@
+<div class="container" ng-controller="GameController">
+    <div class="jumbotron" ng-hide="currentlyInGame">
+        <div class="row text-center">
+            <div class="col-lg-6">
+                <a href="" class="btn btn-primary btn-lg" ng-click="createGame()">Create game</a>
+            </div>
+            <div class="col-lg-6">
+                <a href="" class="btn btn-primary btn-lg" ng-click="joinGame()">Join game</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="jumbotron" ng-show="currentlyInGame">
+        <div class="row">
+            <div class="col-lg-3">
+                <label for="row">Row</label>
+                <input type="number" id="row" ng-model="currentTurn.Row"/>
+            </div>
+            <div class="col-lg-3">
+                <label for="col">Col</label>
+                <input type="number" id="col" ng-model="currentTurn.Col"/>
+            </div>
+            <a href="" class="btn btn-primary btn-sm pull-right" ng-click="makeTurn(currentTurn)">Make your turn</a>
+        </div>
+        <br/>
+        <br/>
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="gamefield text-center">
+                    <h1 class="col-lg-4" ng-repeat="symbol in board track by $index">{{symbol}}</h1>
+                </div>
+            </div>
+            <a href="" class="btn btn-primary btn-sm pull-right" ng-click="getGameStatus()">Refresh game state</a>
+        </div>
+    </div>
+</div>
