@@ -1,5 +1,5 @@
 tictactoeApp.controller('GameController',
-    function ($scope, $window, gameData) {
+    function ($scope, $window, gameData, identity) {
         $scope.currentlyInGame = false;
         $scope.something = 'Hello there';
         $scope.game = {};
@@ -9,6 +9,8 @@ tictactoeApp.controller('GameController',
             chosenCol: 1
         };
         $scope.currentTurnFor = '';
+        $scope.identity = identity;
+        setInterval(UpdateGameBoard($scope.board), 2000);
 
         $scope.createGame = function () {
             gameData.createGame(
@@ -30,11 +32,10 @@ tictactoeApp.controller('GameController',
         $scope.getGameStatus = function() {
             gameData.getGameStatus(
                 function (data) {
-                    var user = JSON.parse($window.sessionStorage.getItem('user'));
-                    var sessionKey = user.access_token;
+                    var user = identity.getCurrentUser();
                     var currentGameId = JSON.parse($window.sessionStorage.getItem('currentGameId'));
-
                     $scope.game = data;
+
                     UpdateGameBoard(data.Board);
                     if ($scope.game.State == 1) {
                         $scope.currentTurnFor = 'Turn X';

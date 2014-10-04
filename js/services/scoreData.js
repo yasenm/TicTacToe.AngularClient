@@ -1,15 +1,11 @@
 'use strict';
 
-tictactoeApp.factory('scoreData', function ($http, $window, baseUrl, identity) {
+tictactoeApp.factory('scoreData', function ($http, $window, baseUrl, authorization) {
     return {
         getData: function (success) {
-            var user = JSON.parse($window.sessionStorage.getItem('user'));
-            var sessionKey = user.access_token;
-
+            var headers = authorization.getAuthorizationHeader();
             $http.get(baseUrl + 'api/high-scores',{
-                headers: {
-                    'Authorization': 'Bearer ' + sessionKey
-                }
+                headers: headers
             }).success(function(data, status, headers,config){
                 success(data);
             });

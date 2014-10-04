@@ -23,6 +23,6 @@ var tictactoeApp = angular
 
     })
     .constant('toastr', toastr)
-    .constant('baseUrl', 'http://tictactoewebapi.apphb.com/')
-    .constant('author', 'Unnamed')
+    .constant('baseUrl', 'http://localhost:33257/')
+    .constant('author', 'yasenm')
     .constant('copyright', 'Telerik Academy');

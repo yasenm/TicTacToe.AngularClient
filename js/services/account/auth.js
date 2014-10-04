@@ -1,7 +1,7 @@
 'use strict';
 
-tictactoeApp.factory('auth', ['$http', '$q', 'identity', 'authorization', 'baseServiceUrl', function($http, $q, identity, authorization, baseUrl) {
-    var usersApi = baseUrl + '/api/users';
+tictactoeApp.factory('auth',  function($http, $q, identity, authorization, baseUrl) {
+    var usersApi = baseUrl + '/api/account';
 
     return {
         signup: function(user) {
@@ -19,7 +19,7 @@ tictactoeApp.factory('auth', ['$http', '$q', 'identity', 'authorization', 'baseS
         login: function(user){
             var deferred = $q.defer();
             user['grant_type'] = 'password';
-            $http.post(usersApi + '/login', 'username=' + user.username + '&password=' + user.password + '&grant_type=password',
+            $http.post(baseUrl + 'token', 'username=' + user.Username + '&password=' + user.Password + '&grant_type=password',
                 {
                     headers: {
                         'Content-Type': 'application/x-www-form-urlencoded'
@@ -57,4 +57,4 @@ tictactoeApp.factory('auth', ['$http', '$q', 'identity', 'authorization', 'baseS
             }
         }
     }
-}]);
+});
