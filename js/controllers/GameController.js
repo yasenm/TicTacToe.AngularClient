@@ -10,6 +10,7 @@ tictactoeApp.controller('GameController',
         };
         $scope.currentTurnFor = '';
         $scope.identity = identity;
+
         setInterval(UpdateGameBoard($scope.board), 2000);
 
         $scope.createGame = function () {
